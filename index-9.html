@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="CyberLab Academy — learn cybersecurity through guided lessons, safe labs, and practice challenges.">
+  <title>CyberLab Academy | Learn Cybersecurity</title>
+  <style>
+    :root{--bg:#07111f;--panel:#0d1b2d;--panel2:#10233a;--line:#1e3953;--text:#eaf3ff;--muted:#9bb0c8;--cyan:#43e4d1;--blue:#65a7ff;--good:#70e1a1;--warn:#ffce75;--danger:#ff8585}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#102d48 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}button,input,select,textarea{font:inherit}button{cursor:pointer}
+    .topbar{position:sticky;top:0;z-index:10;background:#07111feF;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+    .nav{max-width:1200px;margin:auto;padding:13px 22px;display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:.2px;color:var(--text)}.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#07111f;font-weight:950}
+    .navlinks{display:flex;align-items:center;gap:17px;flex-wrap:wrap}.navlinks a{font-size:13px;color:var(--muted)}.navlinks a:hover{color:var(--text)}
+    .wrap{max-width:1200px;margin:auto;padding:30px 22px 60px}.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;padding:38px 0 30px}
+    .eyebrow{color:var(--cyan);font-weight:800;font-size:12px;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.06;letter-spacing:-1.8px;margin:12px 0 16px}.hero h1 span{color:var(--cyan)}.lead{color:var(--muted);font-size:17px;max-width:660px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:11px;padding:10px 15px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn.primary{background:var(--cyan);border-color:var(--cyan);color:#04131c}.btn:hover{filter:brightness(1.08)}.btn.small{font-size:12px;padding:7px 10px}
+    .hero-card,.card,.stat,.terminal,.legal{background:linear-gradient(160deg,#10243a,#0b1828);border:1px solid var(--line);border-radius:18px}.hero-card{padding:22px;box-shadow:0 20px 70px #0003}.terminal-head{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;border-bottom:1px solid var(--line);padding-bottom:12px}.dots{display:flex;gap:5px}.dots i{width:8px;height:8px;border-radius:50%;background:#36506a}.terminal pre{white-space:pre-wrap;overflow-wrap:anywhere;color:#c8d8eb;margin:16px 0 0;font:13px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace}.prompt{color:var(--cyan)}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0 38px}.stat{padding:16px}.stat strong{display:block;font-size:24px}.stat span{font-size:12px;color:var(--muted)}
+    section{margin-top:34px;scroll-margin-top:90px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-bottom:16px}.section-head h2{margin:0;font-size:25px;letter-spacing:-.4px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:19px;min-width:0}.card h3{margin:9px 0 7px;font-size:17px}.card p{color:var(--muted);font-size:13px;margin:0 0 14px}.tag{display:inline-block;border:1px solid #28506b;border-radius:999px;padding:3px 8px;font-size:11px;color:var(--cyan)}.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px}.muted{color:var(--muted)}.icon{font-size:24px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:grid;gap:6px;margin:10px 0}.field label{font-size:12px;color:var(--muted)}input,select,textarea{width:100%;background:#071523;border:1px solid var(--line);border-radius:9px;color:var(--text);padding:11px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--cyan)}.notice{font-size:12px;color:var(--muted);margin-top:10px}.status{min-height:22px;font-size:13px;color:var(--good);margin-top:8px}.status.error{color:var(--danger)}
+    .lab-output{background:#06101b;border:1px solid var(--line);border-radius:10px;padding:14px;min-height:125px;white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:#d6e6f5}.terminal-form{display:flex;gap:8px;margin-top:10px}.terminal-form input{font-family:ui-monospace,monospace}.lesson-list{display:grid;gap:10px}.lesson{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:12px;background:#0a1726}.lesson input{width:auto;margin-top:5px;accent-color:var(--cyan)}.lesson strong{display:block}.lesson small{color:var(--muted)}.progress{height:8px;background:#1a2d42;border-radius:99px;overflow:hidden;margin-top:10px}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--blue));transition:width .2s}
+    .legal{padding:19px;margin-top:16px}.legal h3{margin-top:0}.legal p,.legal li{color:var(--muted);font-size:13px}.footer{border-top:1px solid var(--line);margin-top:48px;padding-top:22px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:12px}
+    .hidden{display:none!important}.pill{font-size:11px;color:var(--good);border:1px solid #24563f;padding:3px 8px;border-radius:99px}
+    @media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.nav{align-items:flex-start}.navlinks{gap:10px}.navlinks a{font-size:12px}}
+    @media(max-width:560px){.nav{padding:10px 14px;display:block}.navlinks{margin-top:10px}.wrap{padding:20px 14px 42px}.hero{padding-top:24px}.grid{grid-template-columns:1fr}.hero h1{letter-spacing:-1px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:21px}.section-head{align-items:flex-start;flex-direction:column}.terminal-form{flex-direction:column}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#home"><span class="logo">CL</span><span>CyberLab <span style="color:var(--cyan)">Academy</span></span></a>
+    <div class="navlinks">
+      <a href="#courses">Courses</a><a href="#labs">Safe Labs</a><a href="#progress">My Progress</a><a href="#account">Account</a><a href="#privacy">Privacy</a><a href="#terms">Terms</a>
+    </div>
+  </nav>
+</header>
+<main class="wrap" id="home">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Learn • Practice • Protect</div>
+      <h1>Build your skills.<br><span>Defend the digital world.</span></h1>
+      <p class="lead">A beginner-friendly cybersecurity learning space with guided lessons, safe practice challenges, and progress tracking. Learn how systems work and how to protect them—ethically.</p>
+      <div class="actions"><a class="btn primary" href="#courses">Explore learning paths ↗</a><a class="btn" href="#labs">Try a safe lab</a></div>
+      <p class="notice">Practice only on systems you own or have clear permission to test. The labs on this page are educational simulations.</p>
+    </div>
+    <div class="hero-card">
+      <div class="terminal-head"><span>CYBERLAB / LEARNING CONSOLE</span><span class="dots"><i></i><i></i><i></i></span></div>
+      <pre><span class="prompt">student@cyberlab:~$</span> start learning
+<span style="color:var(--good)">✓</span> Account-ready learning interface
+<span style="color:var(--good)">✓</span> Safe simulated terminal
+<span style="color:var(--good)">✓</span> Local progress tracker
+<span style="color:var(--warn)">!</span> Connect API for server accounts
+<span class="prompt">student@cyberlab:~$</span> _</pre>
+    </div>
+  </div>
+
+  <div class="stats" aria-label="Learning summary">
+    <div class="stat"><strong id="statCompleted">0</strong><span>Lessons completed</span></div>
+    <div class="stat"><strong>6</strong><span>Learning paths</span></div>
+    <div class="stat"><strong>100%</strong><span>Ethical-first focus</span></div>
+    <div class="stat"><strong id="statProgress">0%</strong><span>Course progress</span></div>
+  </div>
+
+  <section id="courses">
+    <div class="section-head"><div><h2>Learning paths</h2><p>Start with the basics, then build your skills step by step.</p></div><span class="tag">Beginner → Intermediate</span></div>
+    <div class="grid">
+      <article class="card"><div class="icon">🛡️</div><span class="tag">START HERE</span><h3>Cybersecurity Foundations</h3><p>Understand threats, security principles, responsible testing, and digital safety.</p><div class="card-foot"><span class="muted">4 lessons</span><button class="btn small" onclick="showPath('foundations')">Open path</button></div></article>
+      <article class="card"><div class="icon">🌐</div><span class="tag">NETWORKS</span><h3>Networking Basics</h3><p>Learn IP addresses, DNS, ports, protocols, and how devices communicate.</p><div class="card-foot"><span class="muted">4 lessons</span><button class="btn small" onclick="showPath('networking')">Open path</button></div></article>
+      <article class="card"><div class="icon">🐧</div><span class="tag">COMMAND LINE</span><h3>Linux Essentials</h3><p>Explore common shell commands in a safe, simulated learning console.</p><div class="card-foot"><span class="muted">4 lessons</span><button class="btn small" onclick="showPath('linux')">Open path</button></div></article>
+      <article class="card"><div class="icon">🔐</div><span class="tag">DEFENCE</span><h3>Passwords & Authentication</h3><p>Learn password safety, multi-factor authentication, and account protection.</p><div class="card-foot"><span class="muted">4 lessons</span><button class="btn small" onclick="showPath('identity')">Open path</button></div></article>
+      <article class="card"><div class="icon">🕵️</div><span class="tag">WEB SECURITY</span><h3>Web Security Basics</h3><p>Understand HTTPS, input validation, sessions, and common web risks.</p><div class="card-foot"><span class="muted">4 lessons</span><button class="btn small" onclick="showPath('web')">Open path</button></div></article>
+      <article class="card"><div class="icon">🚨</div><span class="tag">BLUE TEAM</span><h3>Incident Response</h3><p>Practise spotting suspicious activity and making a simple response plan.</p><div class="card-foot"><span class="muted">4 lessons</span><button class="btn small" onclick="showPath('defence')">Open path</button></div></article>
+    </div>
+    <div id="pathPanel" class="legal hidden" aria-live="polite"></div>
+  </section>
+
+  <section id="labs">
+    <div class="section-head"><div><h2>Safe practice lab</h2><p>This terminal is simulated in your browser. It does not execute operating-system commands or contact other computers.</p></div><span class="pill">Sandbox simulation</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Learning console</h3><p>Try <code>help</code>, <code>whoami</code>, <code>pwd</code>, <code>ls</code>, <code>ip-info</code>, or <code>clear</code>.</p>
+        <div id="terminalOutput" class="lab-output" role="log" aria-live="polite">CyberLab simulated shell v1.0
+Type "help" to see safe demo commands.
+</div>
+        <form id="terminalForm" class="terminal-form"><input id="terminalInput" aria-label="Simulated command" placeholder="Enter a demo command..." autocomplete="off" maxlength="120" required><button class="btn primary" type="submit">Run demo</button></form>
+        <div class="notice">For real shell execution, connect a properly isolated server-side lab runner. Never execute arbitrary commands directly on a production server.</div>
+      </div>
+      <div class="card">
+        <h3>Quick knowledge check</h3><p>Which action is the best first step before testing a website's security?</p>
+        <form id="quizForm">
+          <label class="lesson"><input type="radio" name="quiz" value="a" required><span><strong>Get clear permission and define the scope</strong><small>Only test systems you are authorised to assess.</small></span></label>
+          <label class="lesson"><input type="radio" name="quiz" value="b"><span><strong>Try random targets on the internet</strong><small>This is not responsible security testing.</small></span></label>
+          <label class="lesson"><input type="radio" name="quiz" value="c"><span><strong>Hide your identity first</strong><small>Privacy does not replace permission.</small></span></label>
+          <button class="btn primary" type="submit">Check answer</button><div id="quizStatus" class="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="progress">
+    <div class="section-head"><div><h2>Your learning progress</h2><p>Progress is saved in this browser on this device. It is not synced to an account unless the backend is connected.</p></div><button id="resetProgress" class="btn small">Reset local progress</button></div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><strong id="progressLabel">0 of 24 lessons completed</strong><span id="progressPercent" class="muted">0%</span></div>
+      <div class="progress"><div id="progressBar"></div></div>
+      <div id="progressChecklist" class="lesson-list" style="margin-top:16px"></div>
+    </div>
+  </section>
+
+  <section id="account">
+    <div class="section-head"><div><h2>Student account</h2><p>Use the connected API for real registration and login.</p></div><span id="apiBadge" class="tag">API: checking…</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Create account</h3>
+        <form id="registerForm">
+          <div class="field"><label for="registerName">Display name</label><input id="registerName" name="name" autocomplete="name" minlength="2" maxlength="60" required></div>
+          <div class="field"><label for="registerEmail">Email</label><input id="registerEmail" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+          <div class="field"><label for="registerPassword">Password (at least 10 characters)</label><input id="registerPassword" name="password" type="password" autocomplete="new-password" minlength="10" maxlength="128" required></div>
+          <button class="btn primary" type="submit">Register</button><div id="registerStatus" class="status" role="status"></div>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Sign in</h3>
+        <form id="loginForm">
+          <div class="field"><label for="loginEmail">Email</label><input id="loginEmail" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="loginPassword">Password</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" required></div>
+          <button class="btn primary" type="submit">Sign in</button><button id="logoutButton" class="btn" type="button">Sign out</button><div id="loginStatus" class="status" role="status"></div>
+        </form>
+        <p class="notice">This page does not store your password. Keep authentication, password hashing, session cookies, and validation on the server.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="section-head"><div><h2>Privacy Policy</h2><p>Last updated: 17 October 2026</p></div></div>
+    <div class="legal">
+      <h3>1. Information and purpose</h3>
+      <p>CyberLab Academy is designed for cybersecurity education. If you create an account through a connected backend, the service may process information you submit, such as your display name, email address, account credentials in securely hashed form, lesson progress, and basic security logs. Do not submit sensitive personal information.</p>
+      <h3>2. Local storage</h3><p>This standalone page saves lesson completion in your browser's local storage. That information remains on this browser until you clear it or reset progress. The simulated terminal does not run system commands or send its inputs to a server.</p>
+      <h3>3. Use and sharing</h3><p>Account data should be used to provide login, learning progress, protect the service, and troubleshoot issues. A deployed backend should explain any analytics, hosting providers, retention periods, or other sharing practices here before launch.</p>
+      <h3>4. Security and children</h3><p>Use a unique password and never share it. If this service is used by children, a responsible adult should review the deployed service and applicable privacy requirements. No website can guarantee absolute security.</p>
+      <h3>5. Your choices and contact</h3><p>You can clear local progress with the reset control or browser settings. For server-held account data, provide a verified contact address and a process for access or deletion before publishing. This template does not yet define a real operator contact.</p>
+      <p><strong>Deployment note:</strong> This is a starter policy, not legal advice. Replace this text with a policy that accurately describes the final service, operator, data practices, and applicable law before collecting real users' information.</p>
+    </div>
+  </section>
+
+  <section id="terms">
+    <div class="section-head"><div><h2>Terms & Conditions</h2><p>Last updated: 17 October 2026</p></div></div>
+    <div class="legal">
+      <h3>1. Educational purpose</h3><p>CyberLab Academy provides learning materials and simulated exercises for cybersecurity education. Learning content is provided for educational purposes and may contain errors or become outdated.</p>
+      <h3>2. Authorised use only</h3><p>You must have explicit permission before testing a device, network, account, application, or website. Do not use the service to access accounts without permission, disrupt systems, steal data, distribute malware, or harm other people. Follow applicable laws and the rules of any lab you use.</p>
+      <h3>3. Accounts and safety</h3><p>Provide accurate account details, protect your credentials, and tell the service operator if you suspect unauthorised account access. The operator may restrict use that threatens users or systems, subject to applicable law.</p>
+      <h3>4. Availability and liability</h3><p>The service is provided on an “as available” basis. To the extent allowed by law, the operator does not promise uninterrupted service or that every lesson is error-free. You are responsible for using your skills safely and lawfully.</p>
+      <h3>5. Updates and contact</h3><p>These terms may be updated as the service changes. Add the operator's legal name, contact details, governing-law information, and any required consumer or child-safety terms before public launch.</p>
+      <p><strong>Deployment note:</strong> This starter template is not legal advice and is not a substitute for reviewing the requirements that apply to the actual operator and audience.</p>
+    </div>
+  </section>
+
+  <footer class="footer"><div>© <span id="year"></span> CyberLab Academy · Learn responsibly.</div><div><a href="#privacy">Privacy Policy</a> · <a href="#terms">Terms & Conditions</a> · <a href="#home">Back to top ↑</a></div></footer>
+</main>
+<script>
+(() => {
+  "use strict";
+  // Set this to your deployed backend origin, e.g. https://api.example.com.
+  // Leave empty when the frontend and /api routes are served from the same origin.
+  const API_BASE = "";
+  const TOTAL = 24;
+  const lessons = [
+    ["foundations","What cybersecurity protects","Learn confidentiality, integrity, and availability."],
+    ["foundations","Threats and risk","Identify assets, threats, weaknesses, and impact."],
+    ["foundations","Ethics and authorisation","Define written permission and testing scope."],
+    ["foundations","Personal digital safety","Recognise scams and protect personal information."],
+    ["networking","IP addresses","Understand how devices are addressed."],
+    ["networking","DNS basics","Learn how domain names resolve to addresses."],
+    ["networking","Ports and protocols","Understand common network services."],
+    ["networking","Network diagrams","Map devices and trusted boundaries."],
+    ["linux","Navigating folders","Practise pwd, ls, and cd in the demo shell."],
+    ["linux","Reading files safely","Learn what cat and less are used for."],
+    ["linux","Users and permissions","Understand least privilege."],
+    ["linux","Processes and logs","Learn why monitoring matters."],
+    ["identity","Strong passwords","Use unique passwords and a password manager."],
+    ["identity","Multi-factor authentication","Add a second verification factor."],
+    ["identity","Phishing awareness","Check links and sender context."],
+    ["identity","Account recovery","Secure recovery options."],
+    ["web","HTTPS and certificates","Understand encrypted connections."],
+    ["web","Input validation","Learn why applications validate user input."],
+    ["web","Sessions and cookies","Understand safe session handling."],
+    ["web","Secure configuration","Reduce unnecessary exposure."],
+    ["defence","Recognise an incident","Identify unusual signs and preserve context."],
+    ["defence","Triage and scope","Decide what needs attention first."],
+    ["defence","Containment and recovery","Follow an approved response plan."],
+    ["defence","Lessons learned","Document improvements after an incident."]
+  ];
+  const pathNames = {foundations:"Cybersecurity Foundations",networking:"Networking Basics",linux:"Linux Essentials",identity:"Passwords & Authentication",web:"Web Security Basics",defence:"Incident Response"};
+  const key = "cyberlabAcademyProgressV1";
+  let completed = new Set();
+  try { completed = new Set(JSON.parse(localStorage.getItem(key) || "[]")); } catch (_) {}
+  const el = id => document.getElementById(id);
+  const api = path => API_BASE + path;
+  const safeText = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  function saveProgress(){ try { localStorage.setItem(key, JSON.stringify([...completed])); } catch (_) {} renderProgress(); }
+  function renderProgress(){
+    const count = completed.size, pct = Math.round(count/TOTAL*100);
+    el("statCompleted").textContent = count; el("statProgress").textContent = pct+"%";
+    el("progressLabel").textContent = `${count} of ${TOTAL} lessons completed`;
+    el("progressPercent").textContent = pct+"%"; el("progressBar").style.width = pct+"%";
+    el("progressChecklist").innerHTML = lessons.map((l,i)=>`<label class="lesson"><input type="checkbox" data-lesson="${i}" ${completed.has(i)?"checked":""}><span><strong>${i+1}. ${safeText(l[1])}</strong><small>${safeText(pathNames[l[0]])} · ${safeText(l[2])}</small></span></label>`).join("");
+    el("progressChecklist").querySelectorAll("[data-lesson]").forEach(box=>box.addEventListener("change",()=>{const i=Number(box.dataset.lesson);box.checked?completed.add(i):completed.delete(i);saveProgress();}));
+  }
+  window.showPath = function(path){
+    const panel=el("pathPanel"), list=lessons.map((l,i)=>({...{path:l[0],title:l[1],desc:l[2],i}})).filter(l=>l.path===path);
+    panel.classList.remove("hidden");
+    panel.innerHTML=`<h3>${safeText(pathNames[path]||"Learning path")}</h3><p>Mark each lesson complete in the progress section as you finish it.</p><ol>${list.map(l=>`<li style="margin:9px 0"><strong>${safeText(l.title)}</strong><br><span class="muted">${safeText(l.desc)}</span> <button class="btn small" data-complete="${l.i}">${completed.has(l.i)?"Completed ✓":"Mark complete"}</button></li>`).join("")}</ol>`;
+    panel.querySelectorAll("[data-complete]").forEach(b=>b.addEventListener("click",()=>{completed.add(Number(b.dataset.complete));saveProgress();window.showPath(path);}));
+    panel.scrollIntoView({behavior:"smooth",block:"nearest"});
+  };
+  el("resetProgress").addEventListener("click",()=>{if(confirm("Reset all lesson progress saved in this browser?")){completed.clear();saveProgress();}});
+  el("year").textContent=new Date().getFullYear();
+  renderProgress();
+
+  const output=el("terminalOutput");
+  const commands={
+    help:"Available demo commands:\n  help       Show this help\n  whoami     Show demo user\n  pwd        Show simulated directory\n  ls         List simulated files\n  ip-info    Show example-only network info\n  date       Show this browser's date\n  clear      Clear the console\n\nThis is a simulation. No OS commands are executed.",
+    whoami:"student (simulated learning account)",
+    pwd:"/home/student (simulated path)",
+    ls:"courses/  notes.txt  practice/  README.md",
+    "ip-info":"Example network data only:\nDevice: training-client\nAddress: 192.0.2.10 (documentation range)\nNetwork access: not performed",
+    date:()=>new Date().toString(),
+    clear:"__CLEAR__"
+  };
+  el("terminalForm").addEventListener("submit",e=>{
+    e.preventDefault(); const input=el("terminalInput"), cmd=input.value.trim().toLowerCase(); input.value="";
+    if(cmd==="clear"){output.textContent="Console cleared. Type \"help\" to continue.\n";return;}
+    const result=commands[cmd];
+    output.textContent += `\nstudent@cyberlab:~$ ${cmd}\n${result ? (typeof result==="function"?result():result) : "Command not available in this safe demo. Type \"help\" for the allowed commands."}\n`;
+    output.scrollTop=output.scrollHeight;
+  });
+  el("quizForm").addEventListener("submit",e=>{e.preventDefault();const answer=new FormData(e.currentTarget).get("quiz");const s=el("quizStatus");s.classList.toggle("error",answer!=="a");s.textContent=answer==="a"?"Correct! Permission and a clearly defined scope come first.":"Not quite. Responsible testing starts with permission and a clearly defined scope.";});
+
+  async function request(path, options={}){
+    const response=await fetch(api(path),{...options,credentials:"include",headers:{"Content-Type":"application/json",...(options.headers||{})}});
+    let data={};try{data=await response.json();}catch(_){}
+    if(!response.ok)throw new Error(data.message||data.error||`Request failed (${response.status})`);
+    return data;
+  }
+  async function showApiStatus(){
+    const badge=el("apiBadge");
+    try{await request("/api/health",{method:"GET",headers:{}});badge.textContent="API: online";badge.style.color="var(--good)";}
+    catch(_){badge.textContent="API: not connected";badge.style.color="var(--warn)";}
+  }
+  function status(id,msg,isError=false){const node=el(id);node.textContent=msg;node.classList.toggle("error",isError);}
+  el("registerForm").addEventListener("submit",async e=>{
+    e.preventDefault();const f=new FormData(e.currentTarget);
+    try{
+      const data=await request("/api/auth/register",{method:"POST",body:JSON.stringify({name:f.get("name"),email:f.get("email"),password:f.get("password")})});
+      status("registerStatus",data.message||"Registration successful. You can now sign in.");
+    }catch(err){status("registerStatus",err.message+" — check that the backend is running and its route matches /api/auth/register.",true);}
+  });
+  el("loginForm").addEventListener("submit",async e=>{
+    e.preventDefault();const f=new FormData(e.currentTarget);
+    try{
+      const data=await request("/api/auth/login",{method:"POST",body:JSON.stringify({email:f.get("email"),password:f.get("password")})});
+      status("loginStatus",data.message||"Signed in successfully.");
+    }catch(err){status("loginStatus",err.message+" — check that the backend is running and its route matches /api/auth/login.",true);}
+  });
+  el("logoutButton").addEventListener("click",async()=>{
+    try{const data=await request("/api/auth/logout",{method:"POST",body:"{}"});status("loginStatus",data.message||"Signed out.");}
+    catch(err){status("loginStatus",err.message+" — backend logout route may not be configured.",true);}
+  });
+  showApiStatus();
+})();
+</script>
+</body>
+</html>
